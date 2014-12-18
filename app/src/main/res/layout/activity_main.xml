@@ -13,15 +13,23 @@
         android:text="get"
         />
 
-    <TextView
-        android:id="@+id/result"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/button"
-        android:layout_marginTop="10dp"
-        android:textSize="30sp"
-        android:text="result"
-        />
+        >
+
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textSize="30sp"
+            android:text="result"
+            />
+
+    </ScrollView>
 
 </RelativeLayout>
