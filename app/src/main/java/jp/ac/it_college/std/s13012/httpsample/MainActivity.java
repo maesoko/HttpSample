@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
-import org.apache.http.client.methods.HttpGet;
 
-
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements View.OnClickListener {
 
     private String url = "http://typosone.jp/test/index.php";
 
@@ -15,19 +13,23 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final Activity activity = this;
-
-        findViewById(R.id.button)
-                .setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // DefaultHttpClient
-                        // new DefaultHttpClientAsyncTask(activity).execute(url);
-
-                        // AndroidHttpClient
-                        new AndroidHttpClientAsyncTask(activity).execute(new HttpGet(url));
-                    }
-                });
+        findViewById(R.id.button).setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button:
+                // DefaultHttpClient
+                // new DefaultHttpClientAsyncTask(this).execute(url);
+
+                // AndroidHttpClient
+                //new AndroidHttpClientAsyncTask(this).execute(new HttpGet(url));
+
+                // HttpUrlConnection
+                new HttpUrlConnectionAsyncTask(this).execute(url);
+
+                break;
+        }
+    }
 }
