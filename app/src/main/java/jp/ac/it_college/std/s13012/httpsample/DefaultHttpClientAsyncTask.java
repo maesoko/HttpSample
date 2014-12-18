@@ -15,7 +15,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class DefaultHttpClientAsyncTask extends AsyncTask<String, Void, String>{
+public class DefaultHttpClientAsyncTask extends AsyncTask<String, Void, String> {
 
     private Activity activity;
 
@@ -50,9 +50,7 @@ public class DefaultHttpClientAsyncTask extends AsyncTask<String, Void, String>{
 
     @Override
     protected void onPostExecute(String result) {
-        if (result != null) {
-            ((TextView) activity.findViewById(R.id.result))
-                    .setText(Html.fromHtml(result));
-        }
+        ((TextView) activity.findViewById(R.id.result))
+                .setText(Html.fromHtml(result));
     }
 }

@@ -24,7 +24,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 // new DefaultHttpClientAsyncTask(this).execute(url);
 
                 // AndroidHttpClient
-                //new AndroidHttpClientAsyncTask(this).execute(new HttpGet(url));
+                // new AndroidHttpClientAsyncTask(this).execute(url);
 
                 // HttpUrlConnection
                 new HttpUrlConnectionAsyncTask(this).execute(url);

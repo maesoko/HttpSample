@@ -8,6 +8,7 @@ import android.text.Html;
 import android.widget.TextView;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 
 import java.io.BufferedReader;
@@ -15,7 +16,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class AndroidHttpClientAsyncTask
-        extends AsyncTask<HttpUriRequest, Void, String>{
+        extends AsyncTask<String, Void, String>{
 
     private Activity activity;
 
@@ -24,13 +25,15 @@ public class AndroidHttpClientAsyncTask
     }
 
     @Override
-    protected String doInBackground(HttpUriRequest... request) {
+    protected String doInBackground(String... params) {
         AndroidHttpClient httpClient = AndroidHttpClient.newInstance("Demo AndroidHttpClient");
         HttpResponse response = null;
         String line = "";
         String result = "";
         try {
-            response = httpClient.execute(request[0]);
+            HttpUriRequest uri = new HttpGet(params[0]);
+
+            response = httpClient.execute(uri);
 
             BufferedReader br = new BufferedReader(
                     new InputStreamReader(response.getEntity().getContent()));
